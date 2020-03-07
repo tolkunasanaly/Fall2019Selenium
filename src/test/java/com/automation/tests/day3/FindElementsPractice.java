@@ -26,10 +26,9 @@ public class FindElementsPractice {
 
         Thread.sleep(2000);
 
-
         WebElement signUp = driver.findElement(By.name("wooden_spooon"));
-     //   signUp.submit();
-        signUp.click();
+        signUp.submit();
+       // signUp.click();
 
         Thread.sleep(2000);
 
