@@ -2,6 +2,7 @@ package com.automation.tests.day6;
 
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
+import org.graalvm.compiler.asm.sparc.SPARCAssembler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,7 +39,22 @@ public class Alerts {
             System.out.println("Expected: "+ expected);
             System.out.println("Actual: "+ actual);
         }
+        BrowserUtils.wait(3);
 
+        buttons.get(1).click(); //to click on the 2nd button
+        BrowserUtils.wait(3);
+        //to click cancel
+        driver.switchTo().alert().dismiss(); // result must be: You clicked: Cancel
+        String expected2 = "You clicked: Cancel";
+        String actual2 = driver.findElement(By.id("result")).getText();
+
+        if(expected2.equals(actual2)){
+            System.out.println("TEST PASSED");
+        }else {
+            System.out.println("TEST FAILED");
+            System.out.println("Expected: "+expected2);
+            System.out.println("Actual:   "+actual2);
+        }
 
         BrowserUtils.wait(3);
         driver.quit();
