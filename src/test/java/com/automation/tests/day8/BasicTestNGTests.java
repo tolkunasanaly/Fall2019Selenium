@@ -1,10 +1,22 @@
 package com.automation.tests.day8;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BasicTestNGTests {
+
+    @BeforeClass
+    public void beforeCLass(){
+        System.out.println("Before Class");
+
+    }
+    public void afterClass(){
+        System.out.println();
+    }
+
+
     @BeforeMethod
     public void setup(){
         System.out.println("Before Method");
