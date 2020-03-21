@@ -2,6 +2,7 @@ package com.automation.tests.day11;
 
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -94,6 +95,12 @@ public class JSExecutor_2 {
 
     @Test
     public void scrollToElement() {
+        //href = link, URL
+        WebElement link = driver.findElement(By.linkText("Cybertek School"));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("arguments[0].scrollIntoView(true)", link);
 
     }
 
