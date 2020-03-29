@@ -24,7 +24,7 @@ public class Driver {
             switch (browser) {
                 case "chrome":
 
-                    WebDriverManager.chromedriver().setup();
+                    WebDriverManager.chromedriver().version("79.0").setup();
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
