@@ -2,7 +2,6 @@ package com.automation.pages;
 
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.Driver;
-import net.bytebuddy.implementation.bind.annotation.FieldProxy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,20 +25,26 @@ public abstract class AbstractPageBase {
     @FindBy(css = "#user-menu > a")
     protected WebElement currentUser;
 
-    public AbstractPageBase(){
+    public AbstractPageBase() {
         PageFactory.initElements(driver, this);
     }
 
-    public String getCurrentUSerName(){
+
+    public String getCurrentUserName(){
         BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(currentUser));
         return currentUser.getText().trim();
     }
 
-    public void navigateTo(String tabName, String moduleName){
-        String tabNameXpath = "//span[@class='title title-level-1' and contains(text(),'"+tabName+"')]";
-        String moduleXpath = "//span[@class='title title-level-2' and text(),'"+moduleName+"']";
 
+    /**
+     * Method for vytrack navigation. Provide tab name and module name to navigate
+     * @param tabName, like Dashboards, Fleet or Customers
+     * @param moduleName, like Vehicles, Vehicles Odometer and Vehicles Costs
+     */
+    public void navigateTo(String tabName, String moduleName) {
+        String tabNameXpath = "//span[@class='title title-level-1' and contains(text(),'" + tabName + "')]";
+        String moduleXpath = "//span[@class='title title-level-2' and text()='" + moduleName + "']";
 
         WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));
         WebElement moduleElement = driver.findElement(By.xpath(moduleXpath));
@@ -53,9 +58,7 @@ public abstract class AbstractPageBase {
                 click(moduleElement).
                 build().perform();
 
-        BrowserUtils.wait(8);
-
-
+        //increase this wait rime if still failing
+        BrowserUtils.wait(4);
     }
-
 }

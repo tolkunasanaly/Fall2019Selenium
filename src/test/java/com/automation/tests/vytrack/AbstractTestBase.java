@@ -15,17 +15,16 @@ public abstract class AbstractTestBase {
 
     @BeforeMethod
     public void setup(){
-        String URL = ConfigurationReader.getProperty("qa1");
+        String URL = ConfigurationReader.getProperty("qa3");
         Driver.getDriver().get(URL);
         Driver.getDriver().manage().window().maximize();
         wait = new WebDriverWait(Driver.getDriver(), 15);
         actions = new Actions(Driver.getDriver());
-
     }
+
 
     @AfterMethod
-    public void TearDown(){
+    public void teardown(){
         Driver.closeDriver();
     }
-
 }
